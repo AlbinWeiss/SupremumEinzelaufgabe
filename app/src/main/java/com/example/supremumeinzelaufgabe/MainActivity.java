@@ -21,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Send matriculation number to server
+        // send matriculation number to server
         Button btn_send = findViewById(R.id.ID_btn_send);
+        // search primes in the matriculation number
+        Button btn_primes = findViewById(R.id.ID_btn_primes);
         final EditText input_matriculationNumber = findViewById(R.id.ID_input_matriculationNumber);
         final TextView output_response = findViewById(R.id.ID_ouput_response);
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                 StrictMode.setThreadPolicy(policy);
-                Log.i("TAG", "Matrikelnummer: " + input_matriculationNumber.getText().toString());
+                // Log.i("TAG", "Matrikelnummer: " + input_matriculationNumber.getText().toString());
 
                 String request = input_matriculationNumber.getText().toString();
                 SocketClientThread socketClientThread = new SocketClientThread(request);
@@ -50,6 +52,40 @@ public class MainActivity extends AppCompatActivity {
                 output_response.setText(response);
             }
         });
+
+        btn_primes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String request = input_matriculationNumber.getText().toString();
+
+                String primesOutput = "";
+                // check matriculation number
+                if (request.length() == 8) {
+                    String primes = searchPrimes(request);
+                    primesOutput = "Alle Primzahlziffern Ihrer Matrikelnummer: " + primes;
+                }
+
+                // Log.i("TAG", "primes" + primesOutput);
+                output_response.setText(primesOutput);
+            }
+        });
+    }
+
+    /**
+     * Searches for all prime numbers in the matriculation number
+     *
+     * @param matriculationNumber
+     * @return
+     */
+    private String searchPrimes(String matriculationNumber) {
+        char[] charArray = matriculationNumber.toCharArray();
+        String primes = "";
+        for (char digit : charArray) {
+            if (digit == '2' || digit == '3' || digit == '5' || digit == '7') {
+                primes = primes + digit;
+            }
+        }
+        return primes;
     }
 
     @Override

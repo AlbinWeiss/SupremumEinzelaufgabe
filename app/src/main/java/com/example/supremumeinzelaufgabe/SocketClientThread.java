@@ -11,7 +11,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 
-public class SocketClientThread implements Runnable{
+public class SocketClientThread implements Runnable {
     String request;
     String response;
 
