@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 if (request.length() == 8) {
                     String primes = searchPrimes(request);
                     primesOutput = "Alle Primzahlziffern Ihrer Matrikelnummer: " + primes;
+                }else{
+                    primesOutput = "Dies ist keine gueltige Matrikelnummer";
                 }
 
                 // Log.i("TAG", "primes" + primesOutput);

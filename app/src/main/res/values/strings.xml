@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SupremumEinzelaufgabe</string>
     <string name="action_settings">Settings</string>
+    <string name="input_text_matriculationNumber_label">Gib deine Matrikelnummer ein</string>
+    <string name="input_text_send_label">ABSCHICKEN</string>
+    <string name="input_text_primes_label">PRIMZAHLEN AUSGEBEN</string>
+    <string name="input_text_antwort_label">Antwort...</string>
+    <string name="input_text_matrikulationNumber_label">Matrikelnummer</string>
 </resources>
